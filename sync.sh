@@ -1,2 +1,2 @@
 #!/bin/bash
-aws s3 sync ./static/ s3://photonic.willnix.me/static
+aws s3 sync . s3://photonic.willnix.me/ --exclude=".git/*" --exclude="*.pid" --exclude="*.sh" --exclude=".gitignore" --exclude=".DS_Store"

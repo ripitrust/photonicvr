@@ -14,7 +14,10 @@ AFRAME.registerComponent('loader', {
 
         el.addEventListener("loaded", function (e) {
 
-            console.log(e);
+            var loader = document.getElementById("loader");
+            var main = document.getElementById("main");
+            main.removeChild(loader);
+
         })
 
     },

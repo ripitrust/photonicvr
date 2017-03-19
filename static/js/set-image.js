@@ -8,7 +8,9 @@
 AFRAME.registerComponent('set-image', {
   schema: {
     on: {type: 'string'},
+    back: {type: 'string'},
     target: {type: 'selector'},
+    original: {type: 'string'},
     src: {type: 'string'},
     dur: {type: 'number', default: 300}
   },
