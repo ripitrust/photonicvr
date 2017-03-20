@@ -41,8 +41,14 @@ AFRAME.registerComponent('set-image', {
         data.target.setAttribute('material', 'src', data.original);
       }, data.dur);
     });
-  },
 
+    el.addEventListener('click', function () {
+
+      //restore original image
+      data.target.setAttribute('material', 'src', data.original);
+  });
+
+},
   /**
    * Setup fade-in + fade-out.
    */

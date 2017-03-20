@@ -19,25 +19,24 @@
     <script src="static/js/route.js"></script>
     <script src="static/js/link.js"></script>
     <script src="static/js/refresh.js"></script>
-    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
 </head>
   </head>
 </head>
 
 <body id="main">
-<img src="/static/media/loader.gif" style="padding-top:20%; padding-left:50%" id="loader"/>
+<div id="loader" style="text-align: center; padding-top:20%;">
+
+    <img style="height: 30px; width: 30px" src="/static/media/loader.gif"  id="loader"/>
+
+    <h4>  Loading Awesomeness </h4>
+</div>
 
   <a-scene loader id="ancestor">
       <a-assets>
         <!-- Image links. -->
-        <img id="home-thumb" src="static/media/home-thumb.png">
-        <img id="arrival-thumb" src="static/media/arrival-thumb.png">
-        <img id="stay-thumb" src="static/media/stay-thumb.png">
-        <img id="events-thumb" src="static/media/events-thumb.png">
-        <img id="nature-thumb" src="static/media/nature-thumb.png">
-        <img id="ball-thumb" src="static/media/ball-thumb.png">
         <img id="hotel-thumb" src="static/media/hotel-thumb.png">
         <img id="pool-thumb" src="static/media/pool-thumb.png">
+        <img id="club-thumb" src="static/media/club-thumb.png">
         
 
 
@@ -75,12 +74,15 @@
         <img id="premium360-toilet" src="static/media/premium360-toilet.jpg">
         <img id="premium360-balcony" src="static/media/premium360-balcony.jpg">
 
+        <img id="club360" src="static/media/club360.jpg">
+        <img id="club360-toilet" src="static/media/club360-toilet.jpg">
+        <img id="club360-balcony" src="static/media/club360-balcony.jpg">
+        <img id="club360-door" src="static/media/club360-door.jpg">
+
         <img id="pool-front" src="static/media/pool-front.jpg">
         <img id="pool-back" src="static/media/pool-back.jpg">
         <img id="pool-corri" src="static/media/pool-corri.jpg">
         <img id="pool-panel" src="static/media/pool-panel.jpg">
-
-        <video id="gbb-video" autoplay="false" src="static/media/event2.mp4"/>
 
         <audio id="click-sound" crossorigin="anonymous" src="static/media/click.wav"></audio>
         <!-- <video id="event-video" src="static/media/event2.mp4"></video> -->
@@ -113,45 +115,16 @@
           </a-cursor>
       </a-entity>
 
-    
-     <a-entity id="home-scene" visible="true" class="scene">
+    <a-entity id="stay-scene" visible="true" class="scene">
 
-         <a-sky rotation="0 90 -15" id="home-360" radius="10" src="#home"></a-sky>
+        <a-sky rotation="0 90 0" id="stay-360" radius="10" src="#stay"></a-sky>
 
-          <a-entity id="main-control" layout="type: line; margin: 1.2" position="-3.5 2.5 -4" >
+        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #stay-360; src: #room ; original: #stay" data-thumb="#hotel-thumb" link="from: #stay-scene; to: #hotel-scene"></a-entity>
 
-              <a-entity template="src: #link" data-src="#home" data-thumb="#home-thumb" data-opacity="0.6">
-              </a-entity>
+        <a-entity  position="1 -0.5 -4"
+          set-image="on: mouseenter; back:mouseleave; target: #stay-360; src: #pool-corri; original: #stay" 
+          link="from: #stay-scene; to: #pool-scene" template="src: #link" data-opacity="0.8" data-thumb="#pool-thumb"></a-entity>
 
-              <a-entity template="src: #link" data-src="#arrival"  data-thumb="#arrival-thumb" link="from: #home; to: #arrival" data-opacity="0.6">
-              </a-entity>
-
-              <a-entity template="src: #link" link="from: #home-scene; to: #stay-scene"
-                        set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #stay; original: #home" data-thumb="#stay-thumb" data-opacity="0.6">
-              </a-entity>
-
-              <a-entity template="src: #link" data-src="#nature" data-thumb="#nature-thumb" data-opacity="0.6"
-                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #pool-back; original: #home" data-thumb="#stay-thumb"
-              link="from: #home-scene; to: #gbb-scene"> 
-              </a-entity>
-
-          </a-entity>
-
-
-    </a-entity>
-
-    <a-entity id="stay-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="image-360" radius="10" src="#stay"></a-sky>
-
-        <a-entity position="-1.8 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#stay"
-             link="from: #stay-scene; to: #home-scene"  data-thumb="#back-thumb" ></a-entity>
-
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#hotel-thumb" link="from: #stay-scene; to: #hotel-scene"></a-entity>
-
-        <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#ball-thumb"></a-entity>
-
-        <a-entity  position="1 -0.5 -4"  link="from: #stay-scene; to: #pool-scene" template="src: #link" data-opacity="0.8" data-thumb="#pool-thumb"></a-entity>
 
     </a-entity>
 
@@ -161,14 +134,16 @@
 
             <a-sky rotation="0 90 -15" id="image-360" radius="10" src="#room"></a-sky>
 
-            <a-entity position="-1.8 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#stay"
+            <a-entity position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#stay"
              link="from: #hotel-scene; to: #stay-scene"  data-thumb="#back-thumb" ></a-entity>
 
-            <a-entity position="-0.8 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#deluxe360" data-thumb="#deluxe-thumb" link="from: #hotel-scene; to: #deluxe-scene" ></a-entity>
+            <a-entity position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#deluxe360" data-thumb="#deluxe-thumb" link="from: #hotel-scene; to: #deluxe-scene" ></a-entity>
 
-            <a-entity  position="0.2 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#suite360" data-thumb="#suite-thumb" link="from: #hotel-scene; to: #suite-scene" ></a-entity>
+            <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#suite360" data-thumb="#suite-thumb" link="from: #hotel-scene; to: #suite-scene" ></a-entity>
 
-            <a-entity  position="1.2 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#premium360" data-thumb="#premium-thumb" link="from: #hotel-scene; to: #premium-scene" ></a-entity>
+            <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#club360" data-thumb="#club-thumb" link="from: #hotel-scene; to: #club-scene" ></a-entity>
+
+            <a-entity  position="2 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#premium360" data-thumb="#premium-thumb" link="from: #hotel-scene; to: #premium-scene" ></a-entity>
 
       </a-entity>
 
@@ -206,7 +181,7 @@
 
 
        <!-- SUITE ROOM  -->
-       <a-entity visible="false" id="suite-scene" >
+      <a-entity visible="false" id="suite-scene" >
 
       <a-sky rotation="0 90 -15" id="image-360" radius="10" src="#suite360"></a-sky>
 
@@ -311,19 +286,47 @@
 
        </a-entity>
 
-       <!-- BALL ROOM CONTROL  -->
-       <a-entity visible="false" id="ballroom-control" >
+       <!-- Club room -->
 
-            <a-entity position="-2.5 -2.5 -4" template="src: #link" data-opacity="0.8" data-src="#stay"  data-thumb="#back-thumb" show-navigation="target: #stay-control; hide: .sub-control"></a-entity>
+       <a-entity visible="false" id="club-scene">
 
-            <a-entity position="-1 -2.5 -4" template="src: #link" data-opacity="0.9" data-src="#ballroom360-front"  data-thumb="#direct4-thumb" show-navigation="target: #ballroom-front-control; hide: .sub-control"></a-entity>
+            <a-sky rotation="0 90 -15" id="image-360" radius="10" src="#club360"></a-sky>
 
-            <a-entity position="-3 -2 -1" template="src: #link" data-opacity="0.9" data-src="#ballroom360-back"  data-thumb="#direct3-thumb" show-navigation="target: #ballroom-back-control; hide: .sub-control"></a-entity>
+             <a-entity position="0 -0.5 -4" template="src: #link" data-opacity="0.6" data-src="#room"  data-thumb="#back-thumb" link="from: #premium-scene; to: #hotel-scene"></a-entity>
 
-      </a-entity>
+             <a-entity position="2 -2 0" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#club-balcony"  data-thumb="#direct-thumb" link="from: #club-scene; to: #club-balcony-scene" ></a-entity>
+
+             <a-entity position="-3 -2 1.5" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#club-toilet"  data-thumb="#direct2-thumb" link="from: #club-scene; to: #club-door-scene" ></a-entity>
+          
+       </a-entity>
 
 
-       <!-- POOL CONTROL  -->
+       
+       <a-entity visible="false" id="club-balcony-scene" >
+
+           <a-sky rotation="0 90 -15" id="image-360" radius="10" src="#club360-balcony"></a-sky>
+
+           <a-entity position="-1 -2.5 -2.5" rotation="90 180 0" template="src: #link" data-opacity="0.9" data-src="#premium360"  data-thumb="#direct4-thumb" link="from: #club-balcony-scene; to: #club-scene"></a-entity>
+
+       </a-entity>
+
+       
+       <a-entity visible="false" id="club-toilet-scene">
+
+           <a-sky rotation="0 180 0" id="image-360" radius="10" src="#club360-toilet"></a-sky>
+           <a-entity position="-3 -3 -1 " rotation="90 90 0" template="src: #link" data-opacity="0.9" data-src="#premium360"  data-thumb="#direct4-thumb" link="from: #club-toilet-scene; to: #club-door-scene"></a-entity>
+
+       </a-entity>
+
+       <a-entity visible="false" id="club-door-scene">
+
+           <a-sky rotation="0 180 0" id="image-360" radius="10" src="#club360-door"></a-sky>
+           <a-entity position="1 -3 -3.5" rotation="90 90 0" template="src: #link" data-opacity="0.9" data-src="#premium360"  data-thumb="#direct-thumb" link="from: #club-door-scene; to: #club-toilet-scene"></a-entity>
+
+            <a-entity position="3 -3 1" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#club-toilet"  data-thumb="#direct-thumb" link="from: #club-door-scene; to: #club-scene" ></a-entity>
+       </a-entity>
+
+        <!-- POOL CONTROL  -->
 
          <a-entity visible="false" id="pool-scene" >
 
@@ -365,17 +368,8 @@
 
        </a-entity>
 
-      <a-entity visible="false" id="gbb-scene" >
+     
 
-          <a-videosphere src="#gbb-video" ></a-videosphere>
-          <a-entity position="0 2 -5" template="src: #link" data-opacity="0.6" data-src="#room"  data-thumb="#back-thumb" link="from: #gbb-scene; to: #home-scene" ></a-entity>
-
-          <a-entity video-controls="src:#gbb-video"></a-entity>
-
-      </a-entity>
-
-
-      
    </a-scene>
 
 

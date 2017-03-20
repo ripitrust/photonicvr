@@ -21,6 +21,9 @@ AFRAME.registerComponent('link', {
             to.setAttribute("visible", "true");
             to.className = "active";
 
+            var cursor = document.getElementById("cursor");
+            cursor.components.raycaster.refreshObjects();
+
         });
     },
 });
