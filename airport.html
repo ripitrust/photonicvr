@@ -31,21 +31,17 @@
   <a-scene loader id="ancestor">
       <a-assets>
         <!-- Image links. -->
-        <img id="hotel-thumb" src="static/media/hotel-thumb.png">
-        <img id="pool-thumb" src="static/media/pool-thumb.png">
-        <img id="club-thumb" src="static/media/club-thumb.png">
-        
         <img id="back-thumb" src="static/media/back-thumb.png">
         <img id="direct-thumb" src="static/media/direct-thumb.png">
         <img id="direct2-thumb" src="static/media/direct2-thumb.png">
         <img id="direct3-thumb" src="static/media/direct3-thumb.png">
         <img id="direct4-thumb" src="static/media/direct4-thumb.png">
 
-        <img id="fd360" src="static/media/flowerdome360.jpg">
-        <img id="fd360-1" src="static/media/flowerdome360-1.jpg">
-        <img id="fd360-2" src="static/media/flowerdome360-2.jpg">
-        <img id="fd360-4" src="static/media/flowerdome360-4.jpg">
-        <img id="fd360-5" src="static/media/flowerdome360-out.jpg">
+        <img id="airport" src="static/media/arrival360.jpg">
+        <img id="airport-front" src="static/media/arrival360-front.jpg">
+        <img id="airport-left" src="static/media/arrival360-left.jpg">
+        <img id="airport-right" src="static/media/arrival360-right.jpg">
+    
 
 
         <img id="room" src="static/media/room360.jpg">
@@ -81,59 +77,46 @@
           </a-cursor>
       </a-entity>
 
-    <a-entity id="fd-scene" visible="true" class="scene">
+    <a-entity id="airport-scene" visible="true" class="scene">
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360"></a-sky>
+        <a-sky rotation="0 90 0" id="airport-sky" radius="10" src="#airport"></a-sky>
 
+        <a-entity  position="2 -3 -5" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct3-thumb" link="from: #airport-scene; to: #airport-left-scene"></a-entity>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower1-thumb"
-        link="from: #fd-scene; to: #fd-scene1"
-         ></a-entity>
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower2-thumb"
-        link="from: #fd-scene; to: #fd-scene2" ></a-entity>
-        <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower4-thumb"
-        link="from: #fd-scene; to: #fd-scene4" ></a-entity>
-        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower5-thumb"
-        link="from: #fd-scene; to: #fd-scene5"></a-entity>
+        <a-entity  position="2 -3 5" rotation="90 0 0"
+          link="from: #airport-scene; to: #airport-right-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
+
 
     </a-entity>
 
-    <a-entity id="fd-scene1" visible="false" class="scene">
+     <a-entity id="airport-left-scene" visible="false" class="scene">
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-1"></a-sky>
+        <a-sky rotation="0 90 0" id="airport-left-sky" radius="10" src="#airport-left"></a-sky>
 
-        <a-entity  position="-2 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene1; to: #fd-scene" ></a-entity>
 
-    </a-entity>
-
-    <a-entity id="fd-scene2" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-2"></a-sky>
-
-        <a-entity  position="-1 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene2; to :#fd-scene" ></a-entity>
-
-    </a-entity>
-    
-
-    <a-entity id="fd-scene4" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-4"></a-sky>
-
-        <a-entity  position="0 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene4; to:#fd-scene" ></a-entity>
+         <a-entity  position="-7 -3 2" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct2-thumb" link="from: #airport-left-scene; to: #airport-scene"></a-entity>
 
     </a-entity>
 
+     <a-entity id="airport-right-scene" visible="false" class="scene">
 
-    <a-entity id="fd-scene5" visible="false" class="scene">
+        <a-sky rotation="0 90 0" id="airport-right-sky" radius="10" src="#airport-right"></a-sky>
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-5"></a-sky>
-
-        <a-entity  position="1 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene5; to:#fd-scene" ></a-entity>
+         <a-entity  position="-5 -3 5" rotation="90 0 0"
+          link="from: #airport-right-scene; to: #airport-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
 
     </a-entity>
 
+     <a-entity id="airport-front-scene" visible="false" class="scene">
 
-   
+        <a-sky rotation="0 90 0" id="airport-front-sky" radius="10" src="#airport-front"></a-sky>
+
+        <a-entity  position="-5 -3 4" rotation="90 0 0"
+          link="from: #airport-front-scene; to: #airport-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
+
+
+    </a-entity>
+
    </a-scene>
     
 </body>

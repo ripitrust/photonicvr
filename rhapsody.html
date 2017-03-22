@@ -12,13 +12,8 @@
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
-    <script src="static/js/set-image.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
     <script src="static/js/loader.js"></script>
-    <script src="static/js/show-navigation.js"></script>
-    <script src="static/js/arrow.js"></script>
-    <script src="static/js/route.js"></script>
-    <script src="static/js/link.js"></script>
-    <script src="static/js/refresh.js"></script>
 </head>
   </head>
 </head>
@@ -34,19 +29,8 @@
   <a-scene loader id="ancestor">
       <a-assets>
         <!-- Image links. -->
-        <img id="hotel-thumb" src="static/media/hotel-thumb.png">
-        <img id="pool-thumb" src="static/media/pool-thumb.png">
-        <img id="home" src="static/media/gbb360.jpg">
-        <img id="stay" src="static/media/stay360.jpg">
-        <img id="room" src="static/media/room360.jpg">
-
-        <img id="pool-front" src="static/media/pool-front.jpg">
-        <img id="pool-back" src="static/media/pool-back.jpg">
-        <img id="pool-corri" src="static/media/pool-corri.jpg">
-        <img id="pool-panel" src="static/media/pool-panel.jpg">
-
-        <audio id="click-sound" crossorigin="anonymous" src="static/media/click.wav"></audio>
-        <!-- <video id="event-video" src="static/media/event2.mp4"></video> -->
+       
+        <video autoplay="false" id="supertree360" src="static/media/supertree360.mp4"></video>
         <!-- Image link template to be reused. -->
 
         <script id="link" type="text/html">
@@ -67,30 +51,20 @@
 
         <a-cursor id="cursor"
           fuse-timeout="2000"
+          color="white"
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
           animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
           event-set__1="_event: mouseenter; color: springgreen"
-          event-set__2="_event: mouseleave; color: black"
+          event-set__2="_event: mouseleave; color: white"
           raycaster="objects: .active">
             
           </a-cursor>
       </a-entity>
+      <a-videosphere src="#supertree360" rotation="0 180 0"></a-videosphere>
 
-    <a-entity id="stay-scene" visible="true" class="scene">
-
-        <a-sky rotation="0 90 0" id="stay-360" radius="10" src="#stay"></a-sky>
-
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #stay-360; src: #room ; original: #stay" data-thumb="#hotel-thumb" route="href: hotel.html"></a-entity>
-
-        <a-entity  position="1 -0.5 -4"
-          set-image="on: mouseenter; back:mouseleave; target: #stay-360; src: #pool-corri; original: #stay" 
-          route="pool.html" template="src: #link" data-opacity="0.8" data-thumb="#pool-thumb"></a-entity>
-
-    </a-entity>
+      <a-entity video-controls="src:#supertree360"></a-entity>
 
    </a-scene>
-
-
     
 </body>
 </html>

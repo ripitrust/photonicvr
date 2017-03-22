@@ -14,6 +14,9 @@
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
     <script src="static/js/set-image.js"></script>
     <script src="static/js/loader.js"></script>
+    <script src="static/js/show-navigation.js"></script>
+    <script src="static/js/arrow.js"></script>
+    <script src="static/js/route.js"></script>
     <script src="static/js/link.js"></script>
     <script src="static/js/refresh.js"></script>
 </head>
@@ -31,25 +34,16 @@
   <a-scene loader id="ancestor">
       <a-assets>
         <!-- Image links. -->
-        <img id="hotel-thumb" src="static/media/hotel-thumb.png">
-        <img id="pool-thumb" src="static/media/pool-thumb.png">
-        <img id="club-thumb" src="static/media/club-thumb.png">
-        
-        <img id="back-thumb" src="static/media/back-thumb.png">
         <img id="direct-thumb" src="static/media/direct-thumb.png">
         <img id="direct2-thumb" src="static/media/direct2-thumb.png">
         <img id="direct3-thumb" src="static/media/direct3-thumb.png">
         <img id="direct4-thumb" src="static/media/direct4-thumb.png">
 
-        <img id="fd360" src="static/media/flowerdome360.jpg">
-        <img id="fd360-1" src="static/media/flowerdome360-1.jpg">
-        <img id="fd360-2" src="static/media/flowerdome360-2.jpg">
-        <img id="fd360-4" src="static/media/flowerdome360-4.jpg">
-        <img id="fd360-5" src="static/media/flowerdome360-out.jpg">
 
-
-        <img id="room" src="static/media/room360.jpg">
-
+        <img id="deluxe360" src="static/media/deluxe360.jpg">
+        <img id="deluxe360-toilet" src="static/media/deluxe360-toilet.jpg">
+        <img id="deluxe360-balcony" src="static/media/deluxe360-balcony.jpg">
+        <img id="suite360-roomleft" src="static/media/suite360-roomleft.jpg">
         <audio id="click-sound" crossorigin="anonymous" src="static/media/click.wav"></audio>
         <!-- <video id="event-video" src="static/media/event2.mp4"></video> -->
         <!-- Image link template to be reused. -->
@@ -81,60 +75,36 @@
           </a-cursor>
       </a-entity>
 
-    <a-entity id="fd-scene" visible="true" class="scene">
+      <a-entity visible="true" id="deluxe-scene" >
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360"></a-sky>
+          <a-sky rotation="0 90 -15" id="image-360" radius="10" src="#deluxe360"></a-sky>
 
+          <a-entity position="-2 -2 0" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#deluxe360-balcony"  data-thumb="#direct2-thumb" link="from :#deluxe-scene; to: #deluxe-balcony-scene" ></a-entity>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower1-thumb"
-        link="from: #fd-scene; to: #fd-scene1"
-         ></a-entity>
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower2-thumb"
-        link="from: #fd-scene; to: #fd-scene2" ></a-entity>
-        <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower4-thumb"
-        link="from: #fd-scene; to: #fd-scene4" ></a-entity>
-        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower5-thumb"
-        link="from: #fd-scene; to: #fd-scene5"></a-entity>
-
-    </a-entity>
-
-    <a-entity id="fd-scene1" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-1"></a-sky>
-
-        <a-entity  position="-2 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene1; to: #fd-scene" ></a-entity>
-
-    </a-entity>
-
-    <a-entity id="fd-scene2" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-2"></a-sky>
-
-        <a-entity  position="-1 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene2; to :#fd-scene" ></a-entity>
-
-    </a-entity>
-    
-
-    <a-entity id="fd-scene4" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-4"></a-sky>
-
-        <a-entity  position="0 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene4; to:#fd-scene" ></a-entity>
-
-    </a-entity>
+           <a-entity position="3 -2 1.5" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#deluxe360-toilet"  data-thumb="#direct-thumb" link="from :#deluxe-scene; to: #deluxe-toilet-scene"></a-entity>
+          
+       </a-entity>
 
 
-    <a-entity id="fd-scene5" visible="false" class="scene">
+       
+       <a-entity visible="false" id="deluxe-balcony-scene" >
+          <a-sky rotation="0 90 -15" id="image-360" radius="10" src="#deluxe360-balcony"></a-sky>
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-5"></a-sky>
+           <a-entity position="-1 -2.5 -2.5" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#deluxe360-balcony"  data-thumb="#direct4-thumb" link="from :#deluxe-balcony-scene; to: #deluxe-scene" ></a-entity>
 
-        <a-entity  position="1 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene5; to:#fd-scene" ></a-entity>
-
-    </a-entity>
+       </a-entity>
 
 
-   
+       
+       <a-entity visible="false" id="deluxe-toilet-scene" >
+          <a-sky rotation="0 180 0" id="image-360" radius="10" src="#deluxe360-toilet"></a-sky>
+           <a-entity position="5 -5 -5" rotation="90 0 0" template="src: #link" data-opacity="0.9" data-src="#deluxe360-toilet"  link="from :#deluxe-toilet-scene; to: #deluxe-scene" data-thumb="#direct-thumb" ></a-entity>
+
+       </a-entity>
+
    </a-scene>
+
+
     
 </body>
 </html>

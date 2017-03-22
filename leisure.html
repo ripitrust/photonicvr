@@ -36,27 +36,7 @@
         <!-- Image links. -->
         <img id="hotel-thumb" src="static/media/hotel-thumb.png">
         <img id="pool-thumb" src="static/media/pool-thumb.png">
-        <img id="club-thumb" src="static/media/club-thumb.png">
-        
-        <img id="back-thumb" src="static/media/back-thumb.png">
-        <img id="direct-thumb" src="static/media/direct-thumb.png">
-        <img id="direct2-thumb" src="static/media/direct2-thumb.png">
-        <img id="direct3-thumb" src="static/media/direct3-thumb.png">
-        <img id="direct4-thumb" src="static/media/direct4-thumb.png">
-
-        <img id="events360" src="static/media/events360.jpg">
-        <img id="ballroom360" src="static/media/ballroom360.jpg">
-        <img id="ballroom360-back" src="static/media/ballroom360-back.jpg">
-        <img id="ballroom360-back1" src="static/media/ballroom360-back1.jpg">
-        <img id="ballroom360-back2" src="static/media/ballroom360-back2.jpg">
-        <img id="ballroom360-back3" src="static/media/ballroom360-back3.jpg">
-        <img id="ballroom360-back4" src="static/media/ballroom360-back4.jpg">
-        <img id="ballroom360-front" src="static/media/ballroom360-front.jpg">
-        <img id="ballroom360-front1" src="static/media/ballroom360-front1.jpg">
-        <img id="ballroom360-front2" src="static/media/ballroom360-front2.jpg">
-
-
-        <img id="room" src="static/media/room360.jpg">
+        <img id="leisure" src="static/media/leisure360.jpg">
 
         <audio id="click-sound" crossorigin="anonymous" src="static/media/click.wav"></audio>
         <!-- <video id="event-video" src="static/media/event2.mp4"></video> -->
@@ -89,112 +69,22 @@
           </a-cursor>
       </a-entity>
 
-    <a-entity id="events-scene" visible="true" class="scene">
+    <a-entity id="leisure-scene" visible="true" class="scene">
 
-        <a-sky rotation="0 90 0" id="events-sky" radius="10" src="#events360"></a-sky>
--
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #events-sky; src: #ballroom360 ; original: #events360" data-thumb="#ballroom-thumb" link="from: #events-scene; to: #ballroom-scene"></a-entity>
+        <a-sky rotation="0 -90 0" id="leisure-sky" radius="10" src="#leisure"></a-sky>
 
-<!--         <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #events-sky; src: #flower360 ; original: #events360" data-thumb="#flower-thumb" link="from: #events-scene; to: #flower-scene"></a-entity>
+        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #leisure-sky; src: #leisure ; original: #stay" data-thumb="#rhapsody-thumb" route="href: rhapsody.html"></a-entity>
 
-        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #events-sky; src:#aqua360 ; original: #events360" data-thumb="#aqua-thumb" link="from: #events-scene; to: #aqua-scene"></a-entity>
- -->
-    </a-entity>
+        <a-entity  position="0 -0.5 -4" set-image="on: mouseenter; back:mouseleave; target: #leisure-sky; src: #pool-corri; original: #stay"
+          route="href: fall.html" template="src: #link" data-opacity="0.8" data-thumb="#fall-thumb"></a-entity>
 
-    <a-entity id="ballroom-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360"></a-sky>
-
-         <a-entity position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-src="#stay"
-             link="from: #ballroom-scene; to: #events-scene"  data-thumb="#back-thumb" ></a-entity>
-
-        <a-entity  position="2 -3 -5" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct3-thumb" link="from: #ballroom-scene; to: #ballroom-front-scene"></a-entity>
-
-        <a-entity  position="2 -3 5" rotation="90 0 0"
-          link="from: #ballroom-scene; to: #ballroom-back-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
-
-
-    </a-entity>
-
-     <a-entity id="ballroom-back-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-back"></a-sky>
-
-
-         <a-entity  position="-7 -3 2" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct2-thumb" link="from: #ballroom-back-scene; to: #ballroom-scene"></a-entity>
-
-        <a-entity  position="7 -3 2" rotation="90 0 0"
-          link="from: #ballroom-back-scene; to: #ballroom-back1-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct-thumb"></a-entity>
-
-    </a-entity>
-
-     <a-entity id="ballroom-back1-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-back1"></a-sky>
-
-         <a-entity  position="-5 -3 5" rotation="90 0 0"
-          link="from: #ballroom-back1-scene; to: #ballroom-back-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
-
-
-         <a-entity  position="-3 -3 5" rotation="90 0 0"
-          link="from: #ballroom-back1-scene; to: #ballroom-back2-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct-thumb"></a-entity>
-
-    </a-entity>
-
-     <a-entity id="ballroom-back2-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-back2"></a-sky>
-
-        <a-entity  position="-5 -3 4" rotation="90 0 0"
-          link="from: #ballroom-back2-scene; to: #ballroom-back1-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
-
-
-         <a-entity  position="-3 -3 5" rotation="90 0 0"
-          link="from: #ballroom-back2-scene; to: #ballroom-back4-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct-thumb"></a-entity>
-
-
-    </a-entity>
-
-     <a-entity id="ballroom-back4-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-back4"></a-sky>
-
-          <a-entity  position="4 -3 -2" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct-thumb" link="from: #ballroom-back4-scene; to: #ballroom-front3-scene"></a-entity>
-
-    </a-entity>
-
-     <a-entity id="ballroom-front-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-front"></a-sky>
-
-
-        <a-entity  position="2 -3 -5" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct3-thumb" link="from: #ballroom-front-scene; to: #ballroom-front1-scene"></a-entity>
-
-        <a-entity  position="2 -3 5" rotation="90 0 0"
-          link="from: #ballroom-front-scene; to: #ballroom-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
-
-    </a-entity>
-
-     <a-entity id="ballroom-front1-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-front1"></a-sky>
-
-        <a-entity  position="-4 -3 -2" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct3-thumb" link="from: #ballroom-front1-scene; to: #ballroom-front2-scene"></a-entity>
-
-        <a-entity  position="2 -3 5" rotation="90 0 0"
-          link="from: #ballroom-front1-scene; to: #ballroom-front-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
-
-    </a-entity>
-
-     <a-entity id="ballroom-front2-scene" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#ballroom360-front2"></a-sky>
-
-        <a-entity  position="-4 -3 2" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct2-thumb" link="from: #ballroom-front2-scene; to: #ballroom-front1-scene"></a-entity>
+        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #leisure-sky; src: #room ; original: #stay" data-thumb="#future-thumb" route="href: future.html"></a-entity>
 
     </a-entity>
 
    </a-scene>
+
+
     
 </body>
 </html>

@@ -19,6 +19,7 @@
     <script src="static/js/route.js"></script>
     <script src="static/js/link.js"></script>
     <script src="static/js/refresh.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
 </head>
   </head>
 </head>
@@ -34,16 +35,20 @@
   <a-scene loader id="ancestor">
       <a-assets>
         <!-- Image links. -->
-        <img id="hotel-thumb" src="static/media/hotel-thumb.png">
-        <img id="pool-thumb" src="static/media/pool-thumb.png">
-        <img id="home" src="static/media/gbb360.jpg">
-        <img id="stay" src="static/media/stay360.jpg">
-        <img id="room" src="static/media/room360.jpg">
+        <img id="arrival-thumb" src="static/media/airport-thumb.png">
+        <img id="stay-thumb" src="static/media/stay-thumb.png">
+        <img id="events-thumb" src="static/media/events-thumb.png">
+        <img id="nature-thumb" src="static/media/leisure-thumb.png">
 
-        <img id="pool-front" src="static/media/pool-front.jpg">
-        <img id="pool-back" src="static/media/pool-back.jpg">
-        <img id="pool-corri" src="static/media/pool-corri.jpg">
-        <img id="pool-panel" src="static/media/pool-panel.jpg">
+
+
+        <img id="home" src="static/media/gbb360.jpg">
+        <img id="airport" src="static/media/arrival360.jpg">
+        <img id="stay" src="static/media/stay360.jpg">
+        <img id="leisure" src="static/media/leisure360.jpg">
+        <img id="events" src="static/media/events360.jpg">
+        
+
 
         <audio id="click-sound" crossorigin="anonymous" src="static/media/click.wav"></audio>
         <!-- <video id="event-video" src="static/media/event2.mp4"></video> -->
@@ -76,18 +81,32 @@
           </a-cursor>
       </a-entity>
 
-    <a-entity id="stay-scene" visible="true" class="scene">
+    
+     <a-entity id="home-scene" visible="true" class="scene">
 
-        <a-sky rotation="0 90 0" id="stay-360" radius="10" src="#stay"></a-sky>
+         <a-sky rotation="0 90 0" id="home-360" radius="10" src="#home"></a-sky>
 
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" set-image="on: mouseenter; back: mouseleave; target: #stay-360; src: #room ; original: #stay" data-thumb="#hotel-thumb" route="href: hotel.html"></a-entity>
+          <a-entity id="main-control" layout="type: line; margin: 1.2" position="-2 -0.5 -4" >
 
-        <a-entity  position="1 -0.5 -4"
-          set-image="on: mouseenter; back:mouseleave; target: #stay-360; src: #pool-corri; original: #stay" 
-          route="pool.html" template="src: #link" data-opacity="0.8" data-thumb="#pool-thumb"></a-entity>
+              <a-entity template="src: #link"  data-thumb="#arrival-thumb" route="href: airport.html" data-opacity="0.8"  set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #airport; original: #home" >
+              </a-entity>
+
+              <a-entity template="src: #link" 
+                        set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #stay; original: #home" route="href: stay.html" data-thumb="#stay-thumb" data-opacity="0.6">
+              </a-entity>
+
+              <a-entity template="src: #link" data-thumb="#events-thumb" data-opacity="0.6"
+                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #events; original: #home" data-thumb="#stay-thumb" route="href: events.html">
+              </a-entity>
+
+              <a-entity template="src: #link" data-thumb="#leisure-thumb" data-opacity="0.6"
+                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #leisure; original: #home" data-thumb="#stay-thumb" route="href: leisure.html">
+              </a-entity>
+          </a-entity>
+
 
     </a-entity>
-
+      
    </a-scene>
 
 

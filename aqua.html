@@ -41,12 +41,15 @@
         <img id="direct3-thumb" src="static/media/direct3-thumb.png">
         <img id="direct4-thumb" src="static/media/direct4-thumb.png">
 
-        <img id="fd360" src="static/media/flowerdome360.jpg">
-        <img id="fd360-1" src="static/media/flowerdome360-1.jpg">
-        <img id="fd360-2" src="static/media/flowerdome360-2.jpg">
-        <img id="fd360-3" src="static/media/flowerdome360-3.jpg">
-        <img id="fd360-4" src="static/media/flowerdome360-4.jpg">
-        <img id="fd360-5" src="static/media/flowerdome360-out.jpg">
+        <img id="aqua" src="static/media/aquarium360.jpg">
+        <img id="aqua-door" src="static/media/aquarium360-door.jpg">
+        <img id="aqua-gallery" src="static/media/aquarium360-gallery.jpg">
+        <img id="aqua-gallery1" src="static/media/aquarium360-gallery1.jpg">
+        <img id="aqua-gallery2" src="static/media/aquarium360-gallery2.jpg">
+        <img id="aqua-jelly" src="static/media/aquarium360-jelly1.jpg">
+        <img id="aqua-jelly2" src="static/media/aquarium360-jelly2.jpg">
+        <img id="aqua-jelly3" src="static/media/aquarium360-jelly3.jpg">
+        <img id="aqua-pillar2" src="static/media/aquarium360-pillar2.jpg">
 
 
         <img id="room" src="static/media/room360.jpg">
@@ -76,74 +79,110 @@
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
           animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
           event-set__1="_event: mouseenter; color: springgreen"
-          event-set__2="_event: mouseleave; color: black"
+          event-set__2="_event: mouseleave; color: white"
           raycaster="objects: .active">
             
           </a-cursor>
       </a-entity>
 
-    <a-entity id="fd-scene" visible="true" class="scene">
+    <a-entity id="aqua-scene" visible="true" class="scene">
 
-        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#fd360"></a-sky>
+        <a-sky rotation="0 90 0" id="aqua-sky" radius="10" src="#aqua"></a-sky>
 
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#aqua-door-thumb"
+        link="from: #aqua-scene; to: #aqua-door-scene"></a-entity>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower1-thumb"
-        link="from: #fd-scene; to: #fd-scene1"
-         ></a-entity>
+        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#aqua-jelly-thumb"
+        link="from: #aqua-scene; to: #aqua-jelly-scene" ></a-entity>
 
-        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower2-thumb"
-        link="from: #fd-scene; to: #fd-scene2" ></a-entity>
-
-        <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower3-thumb"
-        link="from: #fd-scene; to: #fd-scene3" ></a-entity>
-        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower4-thumb"
-        link="from: #fd-scene; to: #fd-scene4" ></a-entity>
-        <a-entity  position="2 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower5-thumb"
-        link="from: #fd-scene; to: #fd-scene5"></a-entity>
+        <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#aqua-gallery-thumb"
+        link="from: #aqua-scene; to: #aqua-gallery-scene" ></a-entity>
+        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#aquaa-pillar-thumb"
+        link="from: #aqua-scene; to: #aqua-pillar-scene" ></a-entity>
 
     </a-entity>
 
-    <a-entity id="fd-scene1" visible="false" class="scene">
+    <a-entity id="aqua-door-scene" visible="false" class="scene">
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-1"></a-sky>
+        <a-sky rotation="0 90 0" id="door-sky" radius="10" src="#aqua-door"></a-sky>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene1; to: #fd-scene" ></a-entity>
+       <a-entity  position="-2 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #aqua-door-scene; to: #aqua-scene" ></a-entity>
 
     </a-entity>
 
-    <a-entity id="fd-scene2" visible="false" class="scene">
+    <a-entity id="aqua-jelly-scene" visible="false" class="scene">
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-2"></a-sky>
+        <a-sky rotation="0 90 0" id="jelly-sky" radius="10" src="#aqua-jelly"></a-sky>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene2; to :#fd-scene" ></a-entity>
+           <a-entity  position="2 -3 -5" rotation="90 0 0" template="src: #link" data-opacity="0.8"  data-thumb="#direct-thumb" link="from: #aqua-jelly-scene; to: #aqua-jelly3-scene"></a-entity>
+
+        <a-entity  position="-4 -3 -5" rotation="90 0 0"
+          link="from: #aqua-jelly-scene; to: #aqua-jelly2-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct2-thumb"></a-entity>
+
+        <a-entity  position="-1 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #aqua-jelly-scene; to: #aqua-scene" ></a-entity>
+
+    </a-entity>
+
+    
+
+     <a-entity id="aqua-jelly2-scene" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="jelly-sky" radius="10" src="#aqua-jelly2"></a-sky>
+
+        <a-entity  position="4 -3 -5" rotation="90 0 0"
+          link="from: #aqua-jelly2-scene; to: #aqua-jelly-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct-thumb"></a-entity>
+
+    </a-entity>
+
+      <a-entity id="aqua-jelly3-scene" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="jelly-sky" radius="10" src="#aqua-jelly3"></a-sky>
+
+        <a-entity  position="-4 -3 3" rotation="90 0 0"
+          link="from: #aqua-jelly3-scene; to: #aqua-jelly-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct3-thumb"></a-entity>
 
     </a-entity>
     
-    <a-entity id="fd-scene3" visible="false" class="scene">
+    <a-entity id="aqua-gallery-scene" visible="false" class="scene">
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-3"></a-sky>
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#aqua-gallery"></a-sky>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene3; to:#fd-scene" ></a-entity>
+        <a-entity  position="-4 -3 3" rotation="90 0 0"
+          link="from: #aqua-gallery-scene; to: #aqua-gallery1-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
 
-    </a-entity>
-
-    <a-entity id="fd-scene4" visible="false" class="scene">
-
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-4"></a-sky>
-
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene4; to:#fd-scene" ></a-entity>
+        <a-entity  position="0 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #aqua-gallery-scene; to:#aqua-scene" ></a-entity>
 
     </a-entity>
 
+    <a-entity id="aqua-gallery1-scene" visible="false" class="scene">
 
-    <a-entity id="fd-scene5" visible="false" class="scene">
+        <a-sky rotation="0 90 0" id="aqua-sky" radius="10" src="#aqua-gallery1"></a-sky>
 
-        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-5"></a-sky>
+        <a-entity  position="-4 -3 -3" rotation="90 0 0"
+          link="from: #aqua-gallery1-scene; to: #aqua-gallery-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct3-thumb"></a-entity>
 
-        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene5; to:#fd-scene" ></a-entity>
+        <a-entity  position="4 -3 -3" rotation="90 0 0"
+          link="from: #aqua-gallery1-scene; to: #aqua-gallery2-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct4-thumb"></a-entity>
 
     </a-entity>
-   
+
+    <a-entity id="aqua-gallery2-scene" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="aqua-sky" radius="10" src="#aqua-gallery2"></a-sky>
+
+        <a-entity  position="0 -3 -3" rotation="90 0 0"
+          link="from: #aqua-gallery2-scene; to: #aqua-gallery1-scene" template="src: #link" data-opacity="0.8" data-thumb="#direct3-thumb"></a-entity>
+
+    </a-entity>
+
+    <a-entity id="aqua-pillar-scene" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#aqua-pillar2"></a-sky>
+
+        <a-entity  position="1 0 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #aqua-pillar-scene; to:#aqua-scene" ></a-entity>
+
+    </a-entity>
+
    </a-scene>
     
 </body>
