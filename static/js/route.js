@@ -15,8 +15,6 @@ AFRAME.registerComponent('route', {
 
              el.addEventListener("click", function () {
 
-                console.log("clicked");
-
                 location.assign( "/" + href + "#" + hash );
 
              });

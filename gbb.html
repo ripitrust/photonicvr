@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+    <title>Photonic Conference</title>
+    <meta name="description" content="photonic-conference">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="static/js/set-image.js"></script>
+    <script src="static/js/loader.js"></script>
+    <script src="static/js/link.js"></script>
+    <script src="static/js/refresh.js"></script>
+</head>
+  </head>
+</head>
+
+<body id="main">
+<div id="loader" style="text-align: center; padding-top:20%;">
+
+    <img style="height: 30px; width: 30px" src="/static/media/loader.gif"  id="loader"/>
+
+    <h4>  Loading Awesomeness </h4>
+</div>
+
+  <a-scene loader id="ancestor">
+      <a-assets>
+        <!-- Image links. -->
+        <img id="hotel-thumb" src="static/media/hotel-thumb.png">
+        <img id="pool-thumb" src="static/media/pool-thumb.png">
+        <img id="club-thumb" src="static/media/club-thumb.png">
+        
+        <img id="back-thumb" src="static/media/back-thumb.png">
+        <img id="direct-thumb" src="static/media/direct-thumb.png">
+        <img id="direct2-thumb" src="static/media/direct2-thumb.png">
+        <img id="direct3-thumb" src="static/media/direct3-thumb.png">
+        <img id="direct4-thumb" src="static/media/direct4-thumb.png">
+
+        <img id="fd360" src="static/media/flowerdome360.jpg">
+        <img id="fd360-1" src="static/media/flowerdome360-1.jpg">
+        <img id="fd360-2" src="static/media/flowerdome360-2.jpg">
+        <img id="fd360-3" src="static/media/flowerdome360-3.jpg">
+        <img id="fd360-4" src="static/media/flowerdome360-4.jpg">
+        <img id="fd360-5" src="static/media/flowerdome360-out.jpg">
+
+
+        <img id="room" src="static/media/room360.jpg">
+
+        <audio id="click-sound" crossorigin="anonymous" src="static/media/click.wav"></audio>
+        <!-- <video id="event-video" src="static/media/event2.mp4"></video> -->
+        <!-- Image link template to be reused. -->
+
+        <script id="link" type="text/html">
+          <a-entity class="active"
+            geometry="primitive: circle; radius: 0.4;"
+            material="shader: standard; src: ${thumb}; opacity: ${opacity}; side:double;"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            sound="on: click; src: #click-sound">
+            </a-entity>
+        </script>
+    </a-assets>
+
+    <!-- Camera + cursor.  -->
+      <a-entity camera position="0 0 0" look-controls>
+
+        <a-cursor id="cursor"
+          fuse-timeout="2000"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          raycaster="objects: .active">
+            
+          </a-cursor>
+      </a-entity>
+
+    <a-entity id="fd-scene" visible="true" class="scene">
+
+        <a-sky rotation="0 90 0" id="ballroom-sky" radius="10" src="#fd360"></a-sky>
+
+
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower1-thumb"
+        link="from: #fd-scene; to: #fd-scene1"
+         ></a-entity>
+
+        <a-entity  position="-1 -0.5 -4" template="src: #link" data-opacity="0.8" data-thumb="#flower2-thumb"
+        link="from: #fd-scene; to: #fd-scene2" ></a-entity>
+
+        <a-entity  position="0 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower3-thumb"
+        link="from: #fd-scene; to: #fd-scene3" ></a-entity>
+        <a-entity  position="1 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower4-thumb"
+        link="from: #fd-scene; to: #fd-scene4" ></a-entity>
+        <a-entity  position="2 -0.5 -4" template="src: #link" data-opacity="0.8"  data-thumb="#flower5-thumb"
+        link="from: #fd-scene; to: #fd-scene5"></a-entity>
+
+    </a-entity>
+
+    <a-entity id="fd-scene1" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-1"></a-sky>
+
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene1; to: #fd-scene" ></a-entity>
+
+    </a-entity>
+
+    <a-entity id="fd-scene2" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-2"></a-sky>
+
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene2; to :#fd-scene" ></a-entity>
+
+    </a-entity>
+    
+    <a-entity id="fd-scene3" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-3"></a-sky>
+
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene3; to:#fd-scene" ></a-entity>
+
+    </a-entity>
+
+    <a-entity id="fd-scene4" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-4"></a-sky>
+
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene4; to:#fd-scene" ></a-entity>
+
+    </a-entity>
+
+
+    <a-entity id="fd-scene5" visible="false" class="scene">
+
+        <a-sky rotation="0 90 0" id="gbb-sky" radius="10" src="#fd360-5"></a-sky>
+
+        <a-entity  position="-2 -0.5 -4" template="src: #link" data-thumb="#back-thumb" data-opacity="0.8" link="from: #fd-scene5; to:#fd-scene" ></a-entity>
+
+    </a-entity>
+
+
+   
+   </a-scene>
+    
+</body>
+</html>
