@@ -7,11 +7,12 @@
     <meta name="description" content="photonic-conference">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
-    <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
     <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
     <script src="static/js/set-image.js"></script>
     <script src="static/js/loader.js"></script>
     <script src="static/js/show-navigation.js"></script>
@@ -19,7 +20,7 @@
     <script src="static/js/route.js"></script>
     <script src="static/js/link.js"></script>
     <script src="static/js/refresh.js"></script>
-    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+    <script src="static/js/look-at.js"></script>
 </head>
   </head>
 </head>
@@ -38,7 +39,7 @@
         <img id="arrival-thumb" src="static/media/airport-thumb.png">
         <img id="stay-thumb" src="static/media/stay-thumb.png">
         <img id="events-thumb" src="static/media/events-thumb.png">
-        <img id="nature-thumb" src="static/media/leisure-thumb.png">
+        <img id="leisure-thumb" src="static/media/leisure-thumb.png">
 
 
 
@@ -57,6 +58,7 @@
         <script id="link" type="text/html">
           <a-entity class="active"
             geometry="primitive: circle; radius: 0.4;"
+            look-at="[camera]"
             material="shader: standard; src: ${thumb}; opacity: ${opacity}; side:double;"
             event-set__1="_event: mousedown; scale: 1 1 1"
             event-set__2="_event: mouseup; scale: 1.2 1.2 1"
@@ -82,26 +84,47 @@
       </a-entity>
 
     
+     <a-entity id="middle" position="0 0 0" ></a-entity>
      <a-entity id="home-scene" visible="true" class="scene">
 
          <a-sky rotation="0 90 0" id="home-360" radius="10" src="#home"></a-sky>
 
-          <a-entity id="main-control" layout="type: line; margin: 1.2" position="-2 -0.5 -4" >
+          <a-entity id="main-control" layout="type: circle; radius: 5" position="0 -0.3 0.9" rotation="0 0 0" >
+
+
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
+
+              <a-entity visible="false" ></a-entity>
+              <a-entity visible="false" ></a-entity>
 
               <a-entity template="src: #link"  data-thumb="#arrival-thumb" route="href: airport.html" data-opacity="0.8"  set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #airport; original: #home" >
               </a-entity>
 
-              <a-entity template="src: #link" 
+              <a-entity template="src: #link"  
                         set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #stay; original: #home" route="href: stay.html" data-thumb="#stay-thumb" data-opacity="0.6">
               </a-entity>
 
-              <a-entity template="src: #link" data-thumb="#events-thumb" data-opacity="0.6"
-                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #events; original: #home" data-thumb="#stay-thumb" route="href: events.html">
+              <a-entity template="src: #link"  data-thumb="#events-thumb" data-opacity="0.6"
+                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #events; original: #home"  route="href: events.html">
               </a-entity>
 
-              <a-entity template="src: #link" data-thumb="#leisure-thumb" data-opacity="0.6"
-                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #leisure; original: #home" data-thumb="#stay-thumb" route="href: leisure.html">
+              <a-entity template="src: #link"   data-thumb="#leisure-thumb" data-opacity="0.6"
+                set-image="on: mouseenter; back:mouseleave; target: #home-360; src: #leisure; original: #home"  route="href: leisure.html">
               </a-entity>
+
+              <a-entity visible="false" ></a-entity>
+
+
+              </a-entity>
+
           </a-entity>
 
 
